@@ -1,4 +1,4 @@
 GP
 ==
 
-Gestão de Processo
+Gestão de Processos
