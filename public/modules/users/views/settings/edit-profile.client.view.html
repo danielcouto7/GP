@@ -1,30 +1,40 @@
 <section class="row" data-ng-controller="SettingsController">
-	<h3 class="col-md-12 text-center">Edit your profile</h3>
-	<div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2">
-		<form name="userForm" data-ng-submit="updateUserProfile(userForm.$valid)" class="signin form-horizontal" autocomplete="off">
-			<fieldset>
-				<div class="form-group">
-					<label for="nomeCompleto">Nome Completo</label>
-					<input type="text" id="nomeCompleto" name="nomeCompleto" class="form-control" data-ng-model="user.fullName" placeholder="nome completo">
-				</div>
-				<div class="form-group">
-					<label for="email">Email</label>
-					<input type="email" id="email" name="email" class="form-control" data-ng-model="user.email" placeholder="Email">
-				</div>
-				<div class="form-group">
-					<label for="username">Username</label>
-					<input type="text" id="username" name="username" class="form-control" data-ng-model="user.username" placeholder="Username">
-				</div>
-				<div class="text-center form-group">
-					<button type="submit" class="btn btn-large btn-primary">Save Profile</button>
-				</div>
-				<div data-ng-show="success" class="text-center text-success">
-					<strong>Profile Saved Successfully</strong>
-				</div>
-				<div data-ng-show="error" class="text-center text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
-			</fieldset>
-		</form>
-	</div>
+    <div class="container">
+        <div class="row">
+		    <div class="col-md-4 col-md-offset-4">
+    		    <div class="panel panel-default">
+			  	    <div class="panel-heading">
+			    	    <h3 class="panel-title">Edição de perfil</h3>
+			 	    </div>
+			  	    <div class="panel-body">
+                        <form name="userForm" data-ng-submit="updateUserProfile(userForm.$valid)"  autocomplete="off">
+                        <fieldset>
+			    	      	<div class="form-group">
+                                <label for="nomeCompleto">Nome completo</label>
+			    		        <input class="form-control" required id="nomeCompleto" data-ng-model="user.fullName" placeholder="nome completo" name="nomeCompleto" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+			    		        <input class="form-control" required id="email" data-ng-model="user.email" placeholder="e-mail" name="email" type="email">
+                            </div>                        
+                            <div class="form-group">
+                                <label for="usuario">Usuário</label>
+			    		        <input class="form-control" required id="usuario" data-ng-model="user.username" placeholder="usuário" name="usuario" type="text">
+                            </div>
+                            <div class="text-center form-group">
+					            <button type="submit" class="btn btn-large btn-primary">Salvar Alterações</button>
+				            </div>
+                            <div data-ng-show="success" class="text-center text-success">
+					            <strong>Alterações salva com sucesso</strong>
+				            </div>
+				            <div data-ng-show="error" class="text-center text-danger">
+					            <strong data-ng-bind="error"></strong>
+				            </div>
+                        </fieldset>
+			      	    </form>
+			        </div>
+			    </div>
+		    </div>
+	    </div>
+    </div>
 </section>
