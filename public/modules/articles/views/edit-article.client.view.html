@@ -5,22 +5,22 @@
 	<div class="col-md-12">
 		<form name="articleForm" class="form-horizontal" data-ng-submit="update(articleForm.$valid)" novalidate>
 			<fieldset>
-				<div class="form-group" ng-class="{ 'has-error' : submitted && articleForm.title.$invalid}">
-					<label class="control-label" for="title">Title</label>
+				<div class="form-group" ng-class="{ 'has-error' : submitted && articleForm.titulo.$invalid}">
+					<label class="control-label" for="titulo">Título</label>
 					<div class="controls">
-						<input name="title" type="text" data-ng-model="article.title" id="title" class="form-control" placeholder="Title" required>
+						<input name="titulo" type="text" data-ng-model="article.titulo" id="titulo" class="form-control" placeholder="Título" required>
 					</div>
-					<div ng-show="submitted && articleForm.title.$invalid" class="help-block">
-						<p ng-show="articleForm.title.$error.required" class="text-danger">Title is required</p>
+					<div ng-show="submitted && articleForm.titulo.$invalid" class="help-block">
+						<p ng-show="articleForm.titulo.$error.required" class="text-danger">Título is required</p>
 					</div>
 				</div>
-				<div class="form-group" ng-class="{ 'has-error' : submitted && articleForm.content.$invalid}">
-					<label class="control-label" for="content">Content</label>
+				<div class="form-group" ng-class="{ 'has-error' : submitted && articleForm.descricao.$invalid}">
+					<label class="control-label" for="descricao">Descrição</label>
 					<div class="controls">
-						<textarea name="content" data-ng-model="article.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content" required></textarea>
+						<textarea name="descricao" data-ng-model="article.descricao" id="descricao" class="form-control" cols="30" rows="10" placeholder="descrição" required></textarea>
 					</div>
-					<div ng-show="submitted && articleForm.content.$invalid" class="help-block">
-						<p ng-show="articleForm.content.$error.required" class="text-danger">Content is required</p>
+					<div ng-show="submitted && articleForm.descricao.$invalid" class="help-block">
+						<p ng-show="articleForm.descricao.$error.required" class="text-danger">Descrição is required</p>
 					</div>
 				</div>
 				<div class="form-group">

@@ -57,7 +57,7 @@ exports.forgot = function(req, res, next) {
 		function(token, user, done) {
 			res.render('templates/reset-password-email', {
 				name: user.displayName,
-				appName: config.app.title,
+				appName: config.app.titulo,
 				url: 'http://' + req.headers.host + '/auth/reset/' + token
 			}, function(err, emailHTML) {
 				done(err, emailHTML, user);
@@ -160,7 +160,7 @@ exports.reset = function(req, res, next) {
 		function(user, done) {
 			res.render('templates/reset-password-confirm-email', {
 				name: user.displayName,
-				appName: config.app.title
+				appName: config.app.titulo
 			}, function(err, emailHTML) {
 				done(err, emailHTML, user);
 			});

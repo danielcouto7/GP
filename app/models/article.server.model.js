@@ -14,13 +14,18 @@ var ArticleSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
-	title: {
+    titulo: {
 		type: String,
 		default: '',
 		trim: true,
 		required: 'Title cannot be blank'
 	},
-	content: {
+	descricao: {
+		type: String,
+		default: '',
+		trim: true
+	},
+    responsavel: {
 		type: String,
 		default: '',
 		trim: true

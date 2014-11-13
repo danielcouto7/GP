@@ -1,20 +1,49 @@
 <section data-ng-controller="ArticlesController" data-ng-init="find()">
-	<div class="page-header">
-		<h1>Articles</h1>
-	</div>
-	<div class="list-group">
-		<a data-ng-repeat="article in articles" data-ng-href="#!/articles/{{article._id}}" class="list-group-item">
-			<small class="list-group-item-text">
-				Posted on
-				<span data-ng-bind="article.created | date:'mediumDate'"></span>
-				by
-				<span data-ng-bind="article.user.displayName"></span>
-			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="article.title"></h4>
-			<p class="list-group-item-text" data-ng-bind="article.content"></p>
-		</a>
-	</div>
-	<div class="alert alert-warning text-center" data-ng-if="articles.$resolved && !articles.length">
-		No articles yet, why don't you <a href="/#!/articles/create">create one</a>?
-	</div>
+    <div class="page-header col-md-12">
+        <div class="row">
+            <h1 class="pull-left">Processos</h1> 
+            <div class="pull-right">
+                <a href="/#!/articles/create">
+                <button type="button" class="btn btn-default" ng-model="button.toggle" style="margin-top: 20px;" bs-checkbox><span class="glyphicon glyphicon-plus"></span> Novo</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th width="65%">Título</th>
+          <th width="12%">Data</th>
+          <th width="15%">Responsável</th>
+          <th width="8%">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-ng-repeat="article in articles" data-ng-href="#!/articles/{{article._id}}">
+              <td data-ng-bind="article.titulo"></td>
+              <td data-ng-bind="article.created | date:'mediumDate'"></td>
+              <td data-ng-bind="article.user.username"></td>
+              <td>Inicializado</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div class="col-md-12">
+        <div class="list-group">
+            <a data-ng-repeat="article in articles" data-ng-href="#!/articles/{{article._id}}" class="list-group-item">
+                <small class="list-group-item-text">
+                    Posted on
+                    <span data-ng-bind="article.created | date:'mediumDate'"></span>
+                    by
+                    <span data-ng-bind="article.user.displayName"></span>
+                </small>
+                <h4 class="list-group-item-heading" data-ng-bind="article.titulo"></h4>
+                <p class="list-group-item-text" data-ng-bind="article.descricao"></p>
+            </a>
+        </div>
+        <div class="alert alert-warning text-center" data-ng-if="articles.$resolved && !articles.length">
+            Nenhum processo foi criado
+        </div>
+    </div>
 </section>

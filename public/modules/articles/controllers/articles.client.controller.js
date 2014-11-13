@@ -1,19 +1,25 @@
 'use strict';
 
-angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles',
-	function($scope, $stateParams, $location, Authentication, Articles) {
+angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles', 'Users',
+	function($scope, $stateParams, $location, Authentication, Articles, Users) {
 		$scope.authentication = Authentication;
+        
+        $scope.users = Users.query();
+                                                             
 
 		$scope.create = function() {
+            
 			var article = new Articles({
-				title: this.title,
-				content: this.content
+				titulo: this.titulo,
+				descricao: this.descricao,
+                responsavel: this.responsavel
 			});
 			article.$save(function(response) {
 				$location.path('articles/' + response._id);
 
-				$scope.title = '';
-				$scope.content = '';
+				$scope.titulo = '';
+				$scope.descricao = '';
+                $scope.responsavel = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

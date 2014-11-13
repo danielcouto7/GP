@@ -33,7 +33,7 @@ module.exports = function(db) {
 	});
 
 	// Setting application local variables
-	app.locals.title = config.app.title;
+	app.locals.titulo = config.app.titulo;
 	app.locals.description = config.app.description;
 	app.locals.keywords = config.app.keywords;
 	app.locals.facebookAppId = config.facebook.clientID;

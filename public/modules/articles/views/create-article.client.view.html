@@ -1,20 +1,29 @@
 <section data-ng-controller="ArticlesController">
 	<div class="page-header">
-		<h1>New Article</h1>
-	</div>
+		<h1>Novo processo</h1>
+    </div>
 	<div class="col-md-12">
 		<form name="articleForm" class="form-horizontal" data-ng-submit="create()" novalidate>
 			<fieldset>
-				<div class="form-group" ng-class="{ 'has-error': articleForm.title.$dirty && articleForm.title.$invalid }">
-					<label class="control-label" for="title">Title</label>
+				<div class="form-group" ng-class="{ 'has-error': articleForm.titulo.$dirty && articleForm.titulo.$invalid }">
+					<label class="control-label" for="titulo">Título</label>
 					<div class="controls">
-						<input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title" required>
+						<input name="titulo" type="text" data-ng-model="titulo" id="titulo" class="form-control" placeholder="título" required>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="content">Content</label>
+					<label class="control-label" for="responsavel">Responsável</label>
 					<div class="controls">
-						<textarea name="content" data-ng-model="content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+                        <select class="form-control" data-ng-model="responsavel" id="responsavel" name="responsavel" type="text">
+                            <option value=""selected="">-- responsável --</option>
+                            <option ng-repeat="user in users" value="{{user.id}}" >{{user.username}}</option>
+                        </select>
+					</div>
+				</div>
+                <div class="form-group">
+					<label class="control-label" for="descricao">Descrição</label>
+					<div class="controls">
+						<textarea name="descricao" data-ng-model="descricao" id="descricao" class="form-control" cols="30" rows="10" placeholder="descrição"></textarea>
 					</div>
 				</div>
 				<div class="form-group">
