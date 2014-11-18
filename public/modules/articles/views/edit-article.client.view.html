@@ -1,20 +1,19 @@
 <section data-ng-controller="ArticlesController" data-ng-init="findOne()">
 	<div class="page-header">
-		<h1>Edit Article</h1>
+		<h1>Editar projeto</h1>
 	</div>
-	<div class="col-md-12">
-		<form name="articleForm" class="form-horizontal" data-ng-submit="update(articleForm.$valid)" novalidate>
+		<form name="articleForm" data-ng-submit="update(articleForm.$valid)" novalidate>
 			<fieldset>
-				<div class="form-group" ng-class="{ 'has-error' : submitted && articleForm.titulo.$invalid}">
-					<label class="control-label" for="titulo">Título</label>
+				<div class="form-group col-md-12" ng-class="{ 'has-error' : submitted && articleForm.nome.$invalid}">
+					<label class="control-label" for="nome">Nome</label>
 					<div class="controls">
-						<input name="titulo" type="text" data-ng-model="article.titulo" id="titulo" class="form-control" placeholder="Título" required>
+						<input name="nome" type="text" data-ng-model="article.nome" id="nome" class="form-control" placeholder="nome" required>
 					</div>
-					<div ng-show="submitted && articleForm.titulo.$invalid" class="help-block">
-						<p ng-show="articleForm.titulo.$error.required" class="text-danger">Título is required</p>
+					<div ng-show="submitted && articleForm.nome.$invalid" class="help-block">
+						<p ng-show="articleForm.nome.$error.required" class="text-danger">Título is required</p>
 					</div>
 				</div>
-				<div class="form-group" ng-class="{ 'has-error' : submitted && articleForm.descricao.$invalid}">
+				<div class="form-group col-md-12" ng-class="{ 'has-error' : submitted && articleForm.descricao.$invalid}">
 					<label class="control-label" for="descricao">Descrição</label>
 					<div class="controls">
 						<textarea name="descricao" data-ng-model="article.descricao" id="descricao" class="form-control" cols="30" rows="10" placeholder="descrição" required></textarea>
@@ -23,6 +22,42 @@
 						<p ng-show="articleForm.descricao.$error.required" class="text-danger">Descrição is required</p>
 					</div>
 				</div>
+                
+                
+                
+                <div class="form-group col-md-4" ng-class="{ 'has-error' : submitted && articleForm.responsavel.$invalid}">
+					<label class="control-label" for="responsavel">Responsável</label>
+					<div class="controls">
+                        <select class="form-control ng-pristine ng-valid" ng-options="user._id as user.username for user in users" data-ng-model="article.responsavel.responsavelId" ng-change="escolheuResponsavelEditar()" id="responsavel" name="responsavel" type="text" required>
+                            <option value=""selected="">responsável</option>
+                        </select>
+					</div>
+				</div>             
+				<div class="form-group col-md-4" ng-class="{ 'has-error' : submitted && articleForm.dtInicio.$invalid}">
+                     <label class="control-label" for="dtInicio">Data início</label>
+                     <div class="controls">
+                             <p class="input-group">
+                                 <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="article.dtInicio" is-open="inicioOpened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                     <button type="button" class="btn btn-default" ng-click="openInicio($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                             </p>
+                     </div>
+                </div>              
+                <div class="form-group col-md-4" ng-class="{ 'has-error' : submitted && articleForm.dtTermino.$invalid}">
+                     <label class="control-label" for="dtTermino">Data término</label>
+                     <div class="controls">
+                             <p class="input-group">
+                                 <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="article.dtTermino" is-open="terminoOpened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                     <button type="button" class="btn btn-default" ng-click="openTermino($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                             </p>
+                     </div>
+                </div>  
+                
+                
+                
 				<div class="form-group">
 					<input type="submit" value="Update" class="btn btn-default">
 				</div>
@@ -31,5 +66,4 @@
 				</div>
 			</fieldset>
 		</form>
-	</div>
 </section>

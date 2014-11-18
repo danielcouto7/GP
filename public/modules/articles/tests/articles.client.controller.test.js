@@ -53,7 +53,7 @@
 		it('$scope.find() should create an array with at least one article object fetched from XHR', inject(function(Articles) {
 			// Create sample article using the Articles service
 			var sampleArticle = new Articles({
-				titulo: 'An Article about MEAN',
+				nome: 'An Article about MEAN',
 				descricao: 'MEAN rocks!'
 			});
 
@@ -74,7 +74,7 @@
 		it('$scope.findOne() should create an array with one article object fetched from XHR using a articleId URL parameter', inject(function(Articles) {
 			// Define a sample article object
 			var sampleArticle = new Articles({
-				titulo: 'An Article about MEAN',
+				nome: 'An Article about MEAN',
 				descricao: 'MEAN rocks!'
 			});
 
@@ -95,19 +95,19 @@
 		it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Articles) {
 			// Create a sample article object
 			var sampleArticlePostData = new Articles({
-				titulo: 'An Article about MEAN',
+				nome: 'An Article about MEAN',
 				descricao: 'MEAN rocks!'
 			});
 
 			// Create a sample article response
 			var sampleArticleResponse = new Articles({
 				_id: '525cf20451979dea2c000001',
-				titulo: 'An Article about MEAN',
+				nome: 'An Article about MEAN',
 				descricao: 'MEAN rocks!'
 			});
 
 			// Fixture mock form input values
-			scope.titulo = 'An Article about MEAN';
+			scope.nome = 'An Article about MEAN';
 			scope.descricao = 'MEAN rocks!';
 
 			// Set POST response
@@ -118,7 +118,7 @@
 			$httpBackend.flush();
 
 			// Test form inputs are reset
-			expect(scope.titulo).toEqual('');
+			expect(scope.nome).toEqual('');
 			expect(scope.descricao).toEqual('');
 
 			// Test URL redirection after the article was created
@@ -129,7 +129,7 @@
 			// Define a sample article put data
 			var sampleArticlePutData = new Articles({
 				_id: '525cf20451979dea2c000001',
-				titulo: 'An Article about MEAN',
+				nome: 'An Article about MEAN',
 				descricao: 'MEAN Rocks!'
 			});
 

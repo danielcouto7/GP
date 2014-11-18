@@ -38,7 +38,7 @@ describe('Article CRUD tests', function() {
 		// Save a user to the test db and create new article
 		user.save(function() {
 			article = {
-				titulo: 'Article Titulo',
+				nome: 'Article Nome',
 				descricao: 'Article Content'
 			};
 
@@ -76,7 +76,7 @@ describe('Article CRUD tests', function() {
 
 								// Set assertions
 								(articles[0].user._id).should.equal(userId);
-								(articles[0].titulo).should.match('Article Titulo');
+								(articles[0].nome).should.match('Article Nome');
 
 								// Call the assertion callback
 								done();
@@ -95,9 +95,9 @@ describe('Article CRUD tests', function() {
 			});
 	});
 
-	it('should not be able to save an article if no titulo is provided', function(done) {
-		// Invalidate titulo field
-		article.titulo = '';
+	it('should not be able to save an article if no nome is provided', function(done) {
+		// Invalidate nome field
+		article.nome = '';
 
 		agent.post('/auth/signin')
 			.send(credentials)
@@ -115,7 +115,7 @@ describe('Article CRUD tests', function() {
 					.expect(400)
 					.end(function(articleSaveErr, articleSaveRes) {
 						// Set message assertion
-						(articleSaveRes.body.message).should.match('Titulo cannot be blank');
+						(articleSaveRes.body.message).should.match('Nome cannot be blank');
 						
 						// Handle article save error
 						done(articleSaveErr);
@@ -142,8 +142,8 @@ describe('Article CRUD tests', function() {
 						// Handle article save error
 						if (articleSaveErr) done(articleSaveErr);
 
-						// Update article titulo
-						article.titulo = 'WHY YOU GOTTA BE SO MEAN?';
+						// Update article nome
+						article.nome = 'WHY YOU GOTTA BE SO MEAN?';
 
 						// Update an existing article
 						agent.put('/articles/' + articleSaveRes.body._id)
@@ -155,7 +155,7 @@ describe('Article CRUD tests', function() {
 
 								// Set assertions
 								(articleUpdateRes.body._id).should.equal(articleSaveRes.body._id);
-								(articleUpdateRes.body.titulo).should.match('WHY YOU GOTTA BE SO MEAN?');
+								(articleUpdateRes.body.nome).should.match('WHY YOU GOTTA BE SO MEAN?');
 
 								// Call the assertion callback
 								done();
@@ -193,7 +193,7 @@ describe('Article CRUD tests', function() {
 			request(app).get('/articles/' + articleObj._id)
 				.end(function(req, res) {
 					// Set assertion
-					res.body.should.be.an.Object.with.property('titulo', article.titulo);
+					res.body.should.be.an.Object.with.property('nome', article.nome);
 
 					// Call the assertion callback
 					done();

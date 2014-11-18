@@ -1,31 +1,51 @@
 <section data-ng-controller="ArticlesController">
 	<div class="page-header">
-		<h1>Novo processo</h1>
+		<h1>Novo projeto</h1>
     </div>
-	<div class="col-md-12">
-		<form name="articleForm" class="form-horizontal" data-ng-submit="create()" novalidate>
+		<form name="articleForm" data-ng-submit="create()" novalidate>
 			<fieldset>
-				<div class="form-group" ng-class="{ 'has-error': articleForm.titulo.$dirty && articleForm.titulo.$invalid }">
-					<label class="control-label" for="titulo">Título</label>
+				<div class="form-group col-md-12" ng-class="{ 'has-error': articleForm.nome.$dirty && articleForm.nome.$invalid }">
+					<label class="control-label" for="nome">Nome</label>
 					<div class="controls">
-						<input name="titulo" type="text" data-ng-model="titulo" id="titulo" class="form-control" placeholder="título" required>
+						<input name="nome" type="text" data-ng-model="nome" id="nome" class="form-control" placeholder="nome" required>
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="control-label" for="responsavel">Responsável</label>
-					<div class="controls">
-                        <select class="form-control" data-ng-model="responsavel" id="responsavel" name="responsavel" type="text">
-                            <option value=""selected="">-- responsável --</option>
-                            <option ng-repeat="user in users" value="{{user.id}}" >{{user.username}}</option>
-                        </select>
-					</div>
-				</div>
-                <div class="form-group">
+				<div class="form-group col-md-12">
 					<label class="control-label" for="descricao">Descrição</label>
 					<div class="controls">
 						<textarea name="descricao" data-ng-model="descricao" id="descricao" class="form-control" cols="30" rows="10" placeholder="descrição"></textarea>
 					</div>
 				</div>
+                <div class="form-group col-md-4">
+					<label class="control-label" for="responsavel">Responsável</label>
+					<div class="controls">
+                        <select class="form-control ng-pristine ng-valid" ng-options="user._id as user.username for user in users" data-ng-model="responsavel.responsavelId" ng-change="escolheuResponsavelCriar()" id="responsavel" name="responsavel" type="text" required>
+                            <option value=""selected="">responsável</option>
+                        </select>
+					</div>
+				</div>             
+				<div class="form-group col-md-4">
+                     <label class="control-label" for="responsavel">Data início</label>
+                     <div class="controls">
+                             <p class="input-group">
+                                 <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="dtInicio" is-open="inicioOpened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                     <button type="button" class="btn btn-default" ng-click="openInicio($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                             </p>
+                     </div>
+                </div>              
+                <div class="form-group col-md-4">
+                     <label class="control-label" for="responsavel">Data término</label>
+                     <div class="controls">
+                             <p class="input-group">
+                                 <input type="text" class="form-control" datepicker-popup="dd/MM/yyyy" ng-model="dtTermino" is-open="terminoOpened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                     <button type="button" class="btn btn-default" ng-click="openTermino($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                             </p>
+                     </div>
+                </div>              
 				<div class="form-group">
 					<input type="submit" class="btn btn-default">
 				</div>
@@ -34,5 +54,12 @@
 				</div>
 			</fieldset>
 		</form>
-	</div>
+	
+    
+    
+    
+
+    
+    
+    
 </section>

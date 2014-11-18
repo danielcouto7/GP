@@ -15,3 +15,6 @@
 }
 body{padding-top:35px;
 }
+tr.tr-article:hover {
+    cursor:pointer;
+}

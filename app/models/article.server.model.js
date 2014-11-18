@@ -14,7 +14,7 @@ var ArticleSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
-    titulo: {
+    nome: {
 		type: String,
 		default: '',
 		trim: true,
@@ -26,10 +26,28 @@ var ArticleSchema = new Schema({
 		trim: true
 	},
     responsavel: {
+        responsavelId: {
+            type: Schema.ObjectId,
+		    ref: 'User',
+            trim: true,
+		    required: 'O id do responsavel deve ser inserido!'
+	    },
+        username: {
+            type: String,
+            required: 'O username do responsavel deve ser informado!'
+        }
+    },
+    dtInicio: {
 		type: String,
 		default: '',
 		trim: true
 	},
+    dtTermino: {
+		type: String,
+		default: '',
+		trim: true
+	},
+    
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'

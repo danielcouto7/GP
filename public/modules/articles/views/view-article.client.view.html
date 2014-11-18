@@ -1,8 +1,9 @@
 <section data-ng-controller="ArticlesController" data-ng-init="findOne()">
 	<div class="page-header">
-		<h1 data-ng-bind="article.titulo"></h1>
+		<h1 data-ng-bind="article.nome"></h1>
 	</div>
-	<div class="pull-right" data-ng-show="authentication.user._id == article.user._id">
+	<!-- <div class="pull-right" data-ng-show="authentication.user._id == article.responsavel._id"> -->
+    <div class="pull-right">
 		<a class="btn btn-primary" href="/#!/articles/{{article._id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>
 		</a>
@@ -12,10 +13,12 @@
 	</div>
 	<small>
 		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="article.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="article.user.displayName"></span>
+			Responsável:
+			<span data-ng-bind="article.responsavel.username">, </span>
+            &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp Data início:
+			<span data-ng-bind="article.dtInicio | date:'mediumDate'"></span>
+            &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp Data término:
+            <span data-ng-bind="article.dtTermino | date:'mediumDate'"></span>
 		</em>
 	</small>
 	<p class="lead" data-ng-bind="article.descricao"></p>
